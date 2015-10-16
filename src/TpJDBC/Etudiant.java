@@ -3,7 +3,9 @@
  */
 package TpJDBC;
 
-public class Etudiant {
+import java.io.Serializable;
+
+public class Etudiant implements Serializable {
     private int numEt=0;
     private String nomEt=null;
     private String prenomEt=null;
@@ -67,4 +69,47 @@ public class Etudiant {
     public int getGroupe() {
         return groupe;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Etudiant etudiant = (Etudiant) o;
+
+        if (numEt != etudiant.numEt) return false;
+        if (annee != etudiant.annee) return false;
+        if (groupe != etudiant.groupe) return false;
+        if (!nomEt.equals(etudiant.nomEt)) return false;
+        if (!prenomEt.equals(etudiant.prenomEt)) return false;
+        if (!cpEt.equals(etudiant.cpEt)) return false;
+        return villeEt.equals(etudiant.villeEt);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = numEt;
+        result = 31 * result + nomEt.hashCode();
+        result = 31 * result + prenomEt.hashCode();
+        result = 31 * result + cpEt.hashCode();
+        result = 31 * result + villeEt.hashCode();
+        result = 31 * result + annee;
+        result = 31 * result + groupe;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Etudiant{" +
+                "numEt=" + numEt +
+                ", nomEt='" + nomEt + '\'' +
+                ", prenomEt='" + prenomEt + '\'' +
+                ", cpEt='" + cpEt + '\'' +
+                ", villeEt='" + villeEt + '\'' +
+                ", annee=" + annee +
+                ", groupe=" + groupe +
+                '}';
+    }
+
 }
