@@ -66,7 +66,7 @@ public class testAsso1 {
             module.setDiscipline(rset1.getString("DISCIPLINE"));
             module.setCoefTest(rset1.getInt("COEFF_TEST"));
             module.setCoefCc(rset1.getInt("COEFF_CC"));
-            module.setModulePere(getModule(rset1.getString("CODEPERE")));
+            module.setPere(getModule(rset1.getString("CODEPERE")));
         }
         rset1.close();
         return module;

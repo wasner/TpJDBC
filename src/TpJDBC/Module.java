@@ -17,7 +17,7 @@ public class Module implements Serializable {
     private int hTpRea;
     private String libelle;
     private Prof responsable; //Q3
-    private Module ModulePere; //Q3
+    private Module pere; //Q3
 
     public String getCode() {
         return code;
@@ -91,12 +91,12 @@ public class Module implements Serializable {
         this.libelle = libelle;
     }
 
-    public Module getModulePere() {
-        return ModulePere;
+    public Module getPere() {
+        return pere;
     } //Q3
 
-    public void setModulePere(Module modulePere) {
-        ModulePere = modulePere;
+    public void setPere(Module pere) {
+        this.pere = pere;
     } //Q3
 
     public Prof getResponsable() {
@@ -123,7 +123,7 @@ public class Module implements Serializable {
         if (code != null ? !code.equals(module.code) : module.code != null) return false;
         if (discipline != null ? !discipline.equals(module.discipline) : module.discipline != null) return false;
         if (libelle != null ? !libelle.equals(module.libelle) : module.libelle != null) return false;
-        if (ModulePere != null ? !ModulePere.equals(module.ModulePere) : module.ModulePere != null) return false;
+        if (pere != null ? !pere.equals(module.pere) : module.pere != null) return false;
         return !(responsable != null ? !responsable.equals(module.responsable) : module.responsable != null);
 
     }
@@ -139,7 +139,7 @@ public class Module implements Serializable {
         result = 31 * result + hTpPrev;
         result = 31 * result + hTpRea;
         result = 31 * result + (libelle != null ? libelle.hashCode() : 0);
-        result = 31 * result + (ModulePere != null ? ModulePere.hashCode() : 0);
+        result = 31 * result + (pere != null ? pere.hashCode() : 0);
         result = 31 * result + (responsable != null ? responsable.hashCode() : 0);
         return result;
     }
@@ -156,7 +156,7 @@ public class Module implements Serializable {
                 ", hTpPrev=" + hTpPrev +
                 ", hTpRea=" + hTpRea +
                 ", libelle='" + libelle + '\'' +
-                ", ModulePere=" + ModulePere +
+                ", pere=" + pere +
                 ", responsable=" + responsable +
                 '}';
     }
