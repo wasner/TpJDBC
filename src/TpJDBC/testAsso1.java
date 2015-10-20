@@ -68,9 +68,7 @@ public class testAsso1 {
             module.setCoefCc(rset1.getInt("COEFF_CC"));
             module.setModulePere(getModule(rset1.getString("CODEPERE")));
         }
-
         rset1.close();
-
         return module;
     }
 }
