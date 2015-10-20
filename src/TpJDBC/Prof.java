@@ -12,6 +12,7 @@ public class Prof implements Serializable{
     private String adrProf;
     private String cpProf;
     private String villeProf;
+    private Module specialite; //Q3
 
     public int getNumProf() {
         return numProf;
@@ -60,6 +61,11 @@ public class Prof implements Serializable{
     public void setVilleProf(String villeProf) {
         this.villeProf = villeProf;
     }
+
+    public Module getSpecialite() { return specialite; } //Q3
+
+    public void setSpecialite(Module specialite) { this.specialite = specialite; } //Q3
+
 
     @Override
     public String toString() {

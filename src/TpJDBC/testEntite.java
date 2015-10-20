@@ -38,12 +38,11 @@ public class testEntite {
             stmt.close();
             System.out.println("\nOk.\n");
         } catch (SQLException e) {
-            e.printStackTrace();// Arggg!!!
+            e.printStackTrace();
             System.out.println(e.getMessage() + "\n");
         } finally {
             if (connection!= null) {
-                // Deconnexion de la base de donnees
-                connection.close();
+                connection.close();  // Deconnexion de la base de donnees
             }
         }
     }

@@ -16,8 +16,8 @@ public class Module implements Serializable {
     private int hTpPrev;
     private int hTpRea;
     private String libelle;
-    private Module ModulePere;
-    private Prof responsable;
+    private Prof responsable; //Q3
+    private Module ModulePere; //Q3
 
     public String getCode() {
         return code;
@@ -93,19 +93,19 @@ public class Module implements Serializable {
 
     public Module getModulePere() {
         return ModulePere;
-    }
+    } //Q3
 
     public void setModulePere(Module modulePere) {
         ModulePere = modulePere;
-    }
+    } //Q3
 
     public Prof getResponsable() {
         return responsable;
-    }
+    } //Q3
 
     public void setResponsable(Prof responsable) {
         this.responsable = responsable;
-    }
+    } //Q3
 
     @Override
     public boolean equals(Object o) {
