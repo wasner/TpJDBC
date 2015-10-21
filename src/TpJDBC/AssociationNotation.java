@@ -10,6 +10,7 @@ public class AssociationNotation {
     private Set<Lien> liens;
 
     private AssociationNotation() {
+        liens = new HashSet<>();
     }
 
     private final static AssociationNotation instance = new AssociationNotation();
@@ -70,7 +71,7 @@ public class AssociationNotation {
         }
         return etu;
     }
-    public AssociationNotation getInstance(){
+    public static AssociationNotation getInstance(){
         return instance;
     }
 }
