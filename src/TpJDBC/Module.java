@@ -5,6 +5,7 @@ package TpJDBC;
 
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Module implements Serializable {
@@ -19,6 +20,8 @@ public class Module implements Serializable {
     private String libelle;
     private Prof responsable; //Q3
     private Module pere; //Q3
+
+    final private Set<Enseignement> enseignements = new HashSet<>(); //Question 5 relation : A1
 
     public Module() {
     }
@@ -115,6 +118,10 @@ public class Module implements Serializable {
     public void setResponsable(Prof responsable) {
         this.responsable = responsable;
     } //Q3
+
+    public Set<Enseignement> getEnseignements() { return enseignements; } //Q5
+
+    public void addEnseignement(Enseignement e){ enseignements.add(e); } //Q5
 
     @Override
     public boolean equals(Object o) {
