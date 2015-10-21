@@ -5,6 +5,7 @@ package TpJDBC;
 
 
 import java.io.Serializable;
+import java.util.Set;
 
 public class Module implements Serializable {
     private String code;
@@ -18,6 +19,7 @@ public class Module implements Serializable {
     private String libelle;
     private Prof responsable; //Q3
     private Module pere; //Q3
+
 
     public String getCode() {
         return code;

@@ -4,15 +4,17 @@
 package TpJDBC;
 
 import java.io.Serializable;
+import java.util.Set;
 
 public class Etudiant implements Serializable {
-    private int numEt=0;
-    private String nomEt=null;
-    private String prenomEt=null;
-    private String cpEt=null;
-    private String villeEt=null;
-    private  int annee=0;
-    private int groupe=0;
+    private int numEt;
+    private String nomEt;
+    private String prenomEt;
+    private String cpEt;
+    private String villeEt;
+    private  int annee;
+    private int groupe;
+
 
     public void setNumEt(int numEt) {
         this.numEt = numEt;
