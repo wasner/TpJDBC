@@ -54,6 +54,16 @@ public class Lien {
     }
 
     @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Lien{");
+        sb.append("module=").append(module.getCode());
+        sb.append(", etudiant=").append(etudiant.getNumEt());
+        sb.append(", note=").append(note);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    @Override
     public int hashCode() {
         int result = module.hashCode();
         result = 31 * result + etudiant.hashCode();

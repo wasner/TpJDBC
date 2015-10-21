@@ -8,7 +8,8 @@ public class Notation {
     private float moyCC;
     private float moyTest;
 
-
+    public Notation() {
+    }
 
     public Notation(float moyCC, float moyTest) {
         this.moyCC = moyCC;

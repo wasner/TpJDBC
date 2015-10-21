@@ -92,10 +92,10 @@ public class Etudiant implements Serializable {
     @Override
     public int hashCode() {
         int result = numEt;
-        result = 31 * result + nomEt.hashCode();
-        result = 31 * result + prenomEt.hashCode();
-        result = 31 * result + cpEt.hashCode();
-        result = 31 * result + villeEt.hashCode();
+        result = 31 * result + (nomEt != null ? nomEt.hashCode() : 0);
+        result = 31 * result + (prenomEt != null ? prenomEt.hashCode() : 0);
+        result = 31 * result + (cpEt != null ? cpEt.hashCode() : 0);
+        result = 31 * result + (villeEt != null ? villeEt.hashCode() : 0);
         result = 31 * result + annee;
         result = 31 * result + groupe;
         return result;

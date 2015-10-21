@@ -20,6 +20,13 @@ public class Module implements Serializable {
     private Prof responsable; //Q3
     private Module pere; //Q3
 
+    public Module() {
+    }
+
+    public Module(String code) {
+        this.code = code;
+    }
+
 
     public String getCode() {
         return code;
@@ -115,19 +122,8 @@ public class Module implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         Module module = (Module) o;
-
-        if (coefCc != module.coefCc) return false;
-        if (coefTest != module.coefTest) return false;
-        if (hCoursPrev != module.hCoursPrev) return false;
-        if (hCoursRea != module.hCoursRea) return false;
-        if (hTpPrev != module.hTpPrev) return false;
-        if (hTpRea != module.hTpRea) return false;
         if (code != null ? !code.equals(module.code) : module.code != null) return false;
-        if (discipline != null ? !discipline.equals(module.discipline) : module.discipline != null) return false;
-        if (libelle != null ? !libelle.equals(module.libelle) : module.libelle != null) return false;
-        if (pere != null ? !pere.equals(module.pere) : module.pere != null) return false;
-        return !(responsable != null ? !responsable.equals(module.responsable) : module.responsable != null);
-
+        return code != null;
     }
 
     @Override

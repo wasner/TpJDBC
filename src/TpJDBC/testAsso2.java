@@ -4,10 +4,8 @@
 package TpJDBC;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class testAsso2 {
     // La requete de test
@@ -34,6 +32,10 @@ public class testAsso2 {
                 Notation notation = creerNotation(rset);
                 AssociationNotation.getInstance().creerLien(module,etudiant,notation);
             }
+
+
+            Set<Lien> liens =  AssociationNotation.getInstance().getLiens(new Module("ACSI"));
+            liens.forEach(System.out::println);
             stmNotes.close(); // Fermeture de l'instruction
             System.out.println("\nOk.\n");
         } catch (SQLException e) {
@@ -46,16 +48,39 @@ public class testAsso2 {
         }
     }
 
-    private static Notation creerNotation(ResultSet resultSet) {
-        return null;
+    private static Notation creerNotation(ResultSet resultSet) throws SQLException {
+        Notation Not = new Notation();
+        Not.setMoyCC(resultSet.getFloat("MOY_CC"));
+        Not.setMoyTest(resultSet.getFloat("MOY_TEST"));
+        return Not;
     }
 
-    private static Module creerModule(ResultSet resultSet) {
-        return null;
+    private static Module creerModule(ResultSet resultSet) throws SQLException {
+        Module Mod = new Module();
+        Mod.setCode(resultSet.getString("CODE"));
+        Mod.setCoefCc(resultSet.getInt("COEFF_CC"));
+        Mod.setCoefTest(resultSet.getInt("COEFF_TEST"));
+        Mod.setDiscipline(resultSet.getString("DISCIPLINE"));
+        Mod.sethCoursPrev(resultSet.getInt("H_COURS_PREV"));
+        Mod.sethCoursRea(resultSet.getInt("H_COURS_REA"));
+        Mod.sethTpPrev(resultSet.getInt("H_TP_PREV"));
+        Mod.sethTpRea(resultSet.getInt("H_TP_REA"));
+        Mod.setLibelle(resultSet.getString("LIBELLE"));
+        Mod.setPere(null);
+        Mod.setResponsable(null);
+        return Mod;
     }
 
-    private static Etudiant creerEtudiant(ResultSet resultSet) {
-        return null;
+    private static Etudiant creerEtudiant(ResultSet resultSet) throws SQLException {
+        Etudiant Etu = new Etudiant();
+        Etu.setNumEt(resultSet.getInt("NUM_ET"));
+        Etu.setNomEt(resultSet.getString("NOM_ET"));
+        Etu.setPrenomEt(resultSet.getString("PRENOM_ET"));
+        Etu.setCpEt(resultSet.getString("CP_ET"));
+        Etu.setVilleEt(resultSet.getString("VILLE_ET"));
+        Etu.setAnnee(resultSet.getInt("ANNEE"));
+        Etu.setGroupe(resultSet.getInt("GROUPE"));
+        return Etu;
     }
 
     private static Prof getProf(ResultSet rset) throws SQLException {
@@ -70,7 +95,7 @@ public class testAsso2 {
     static private Module getModule(String code) throws SQLException { //Q3
         Module module = null;
         Connection connection = ConnexionUnique.getInstance().getConnection();
-        PreparedStatement PStmt = connection.prepareStatement(reqM);
+        PreparedStatement PStmt = connection.prepareStatement(reqmod);
 
         PStmt.setString(1, code);
         ResultSet rset1 = PStmt.executeQuery();
