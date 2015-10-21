@@ -5,6 +5,7 @@ package TpJDBC;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class testAsso1 {
     // La requete de test
@@ -13,7 +14,7 @@ public class testAsso1 {
     public static void main(String[] args) throws SQLException {
         // Objet materialisant la connexion a la base de donnees
         Connection connection = ConnexionUnique.getInstance().getConnection();
-        ArrayList <Prof> arraylis= new ArrayList <Prof>();
+
         try {
             // Creation d'une instruction SQL
             Statement stmt = connection.createStatement();
@@ -22,22 +23,15 @@ public class testAsso1 {
             System.out.println("Execution de la requete : " + req );
             ResultSet rset = stmt.executeQuery(req);
             // Affichage du resultat
+            List<Prof> profs= new ArrayList <Prof>();
             while (rset.next()){
-				/*System.out.print(rset.getInt("NUM_ET") + " ");
-				System.out.print(rset.getString("NOM_ET") + " ");
-				System.out.println(rset.getString("PRENOM_ET"));*/
-                arraylis.add(new Prof());
-                arraylis.get(arraylis.size()-1).setNumProf(rset.getInt("NUM_PROF"));
-                arraylis.get(arraylis.size()-1).setNomProf(rset.getString("NOM_PROF"));
-                arraylis.get(arraylis.size()-1).setPrenomProf(rset.getString("PRENOM_PROF"));
-                arraylis.get(arraylis.size()-1).setSpecialite(getModule(rset.getString("MAT_SPEC"))); //Q3
-                System.out.print(arraylis.get(arraylis.size()-1).getNumProf()+ " ");
-                System.out.print(arraylis.get(arraylis.size()-1).getNomProf()+ " ");
-                System.out.println(arraylis.get(arraylis.size()-1).getPrenomProf()+ " ");
-                System.out.println(arraylis.get(arraylis.size()-1).getSpecialite()+ " ");
+                Prof p = getProf(rset);
+                profs.add(p);
             }
-            // Fermeture de l'instruction (liberation des ressources)
-            stmt.close();
+
+            profs.forEach(System.out::println); // Lis ligne par ligne la collection profs en java 1.8
+
+            stmt.close(); // Fermeture de l'instruction
             System.out.println("\nOk.\n");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -48,6 +42,16 @@ public class testAsso1 {
             }
         }
     }
+
+    private static Prof getProf(ResultSet rset) throws SQLException {
+        Prof p = new Prof();
+        p.setNumProf(rset.getInt("NUM_PROF"));
+        p.setNomProf(rset.getString("NOM_PROF"));
+        p.setPrenomProf(rset.getString("PRENOM_PROF"));
+        p.setSpecialite(getModule(rset.getString("MAT_SPEC")));
+        return p;
+    }
+
     static private Module getModule(String code) throws SQLException { //Q3
         Module module = null;
         Connection connection = ConnexionUnique.getInstance().getConnection();

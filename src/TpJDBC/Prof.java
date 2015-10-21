@@ -68,18 +68,6 @@ public class Prof implements Serializable{
 
 
     @Override
-    public String toString() {
-        return "Prof{" +
-                "numProf=" + numProf +
-                ", nomProf='" + nomProf + '\'' +
-                ", prenomProf='" + prenomProf + '\'' +
-                ", adrProf='" + adrProf + '\'' +
-                ", cpProf='" + cpProf + '\'' +
-                ", villeProf='" + villeProf + '\'' +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -91,7 +79,8 @@ public class Prof implements Serializable{
         if (prenomProf != null ? !prenomProf.equals(prof.prenomProf) : prof.prenomProf != null) return false;
         if (adrProf != null ? !adrProf.equals(prof.adrProf) : prof.adrProf != null) return false;
         if (cpProf != null ? !cpProf.equals(prof.cpProf) : prof.cpProf != null) return false;
-        return !(villeProf != null ? !villeProf.equals(prof.villeProf) : prof.villeProf != null);
+        if (villeProf != null ? !villeProf.equals(prof.villeProf) : prof.villeProf != null) return false;
+        return !(specialite != null ? !specialite.equals(prof.specialite) : prof.specialite != null);
 
     }
 
@@ -103,6 +92,21 @@ public class Prof implements Serializable{
         result = 31 * result + (adrProf != null ? adrProf.hashCode() : 0);
         result = 31 * result + (cpProf != null ? cpProf.hashCode() : 0);
         result = 31 * result + (villeProf != null ? villeProf.hashCode() : 0);
+        result = 31 * result + (specialite != null ? specialite.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Prof{");
+        sb.append("numProf=").append(numProf);
+        sb.append(", nomProf='").append(nomProf).append('\'');
+        sb.append(", prenomProf='").append(prenomProf).append('\'');
+        sb.append(", adrProf='").append(adrProf).append('\'');
+        sb.append(", cpProf='").append(cpProf).append('\'');
+        sb.append(", villeProf='").append(villeProf).append('\'');
+        sb.append(", specialite=").append(specialite);
+        sb.append('}');
+        return sb.toString();
     }
 }

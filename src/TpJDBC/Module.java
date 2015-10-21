@@ -146,18 +146,19 @@ public class Module implements Serializable {
 
     @Override
     public String toString() {
-        return "Module{" +
-                "code='" + code + '\'' +
-                ", coefCc=" + coefCc +
-                ", coefTest=" + coefTest +
-                ", discipline='" + discipline + '\'' +
-                ", hCoursPrev=" + hCoursPrev +
-                ", hCoursRea=" + hCoursRea +
-                ", hTpPrev=" + hTpPrev +
-                ", hTpRea=" + hTpRea +
-                ", libelle='" + libelle + '\'' +
-                ", pere=" + pere +
-                ", responsable=" + responsable +
-                '}';
+        final StringBuilder sb = new StringBuilder("Module{");
+        sb.append("code='").append(code).append('\'');
+        sb.append(", coefCc=").append(coefCc);
+        sb.append(", coefTest=").append(coefTest);
+        sb.append(", discipline='").append(discipline).append('\'');
+        sb.append(", hCoursPrev=").append(hCoursPrev);
+        sb.append(", hCoursRea=").append(hCoursRea);
+        sb.append(", hTpPrev=").append(hTpPrev);
+        sb.append(", hTpRea=").append(hTpRea);
+        sb.append(", libelle='").append(libelle).append('\'');
+        sb.append(", responsable=").append(responsable);
+        sb.append(", pere=").append(pere);
+        sb.append('}');
+        return sb.toString();
     }
 }
