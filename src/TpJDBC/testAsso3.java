@@ -11,9 +11,9 @@ import java.util.ArrayList;
 public class testAsso3 {
     // La requete de test
     final static private String reqmod = "SELECT * " +
-            "FROM NOTATION, MODULE, ETUDIANT " +
+            "FROM ENSEIGNT,PROF, NOTATION, MODULE, ETUDIANT " +
             "WHERE NOTATION.NUM_ET = ETUDIANT.NUM_ET " +
-            "AND NOTATION.CODE = MODULE.CODE" +
+            "AND NOTATION.CODE = MODULE.CODE " +
             "AND PROF.NUM_PROF = ENSEIGNT.NUM_PROF";
     static Statement stmNotes;
 
@@ -34,7 +34,7 @@ public class testAsso3 {
                 Module module = creerMODULE(rset);
                 Prof prof = creerPROF(rset);
 
-                Enseignement e = new Enseignement();
+                Enseignement e = new Enseignement(module,etudiant,prof);
                 e.setEtudiant(etudiant);
                 e.setModule(module);
                 e.setProf(prof);
@@ -61,7 +61,7 @@ public class testAsso3 {
         }
     }
 
-    private static Prof creerPROF(ResultSet rset) throws SQLException { //CréerProf Q5
+    private static Prof creerPROF(ResultSet rset) throws SQLException { //CreerProf Q5
         Prof prof = new Prof ();
         prof.setNumProf(rset.getInt("NUM_PROF"));
         prof.setNomProf(rset.getString("NOM_PROF"));
@@ -72,9 +72,9 @@ public class testAsso3 {
         return prof;
     }
 
-    private static Module creerMODULE(ResultSet rset) throws SQLException { //CréerModule Q5
+    private static Module creerMODULE(ResultSet rset) throws SQLException { //CreerModule Q5
         Module module = new Module ();
-        module.setCode(rset.getString("MODULE.CODE"));
+        module.setCode(rset.getString("CODE"));
         module.setLibelle(rset.getString("LIBELLE"));
         module.sethCoursPrev(rset.getInt("H_COURS_PREV"));
         module.sethCoursRea(rset.getInt("H_COURS_REA"));
@@ -86,7 +86,7 @@ public class testAsso3 {
         return module;
     }
 
-    private static Etudiant creerETUDIANT(ResultSet rset) throws SQLException { //CréerEtudiant Q5
+    private static Etudiant creerETUDIANT(ResultSet rset) throws SQLException { //CreerEtudiant Q5
         Etudiant etudiant = new Etudiant ();
         etudiant.setNumEt(rset.getInt("NUM_ET"));
         etudiant.setNomEt(rset.getString("NOM_ET"));
