@@ -29,11 +29,11 @@ public class DAOEtudiant {
         int Maximum = resultSet.getInt(1);
         Maximum++; // On ajoute un au numéros le plus grand
         String req = "INSERT INTO ETUDIANT (NUM_ET, ANNEE, CP_ET, GROUPE, NOM_ET, PRENOM_ET, VILLE_ET)" +
-                " VALUES(" + Maximum + "," +
-                "" + Etu.getAnnee() + "," +
-                "'" + Etu.getCpEt() + "'," +
-                "" + Etu.getGroupe() + "," +
-                "'" + Etu.getNomEt() + "'," +
+                " VALUES(" + Maximum + ","     +
+                ""  +  Etu.getAnnee() + ","    +
+                "'" + Etu.getCpEt() + "',"     +
+                ""  +  Etu.getGroupe() + ","   +
+                "'" + Etu.getNomEt() + "',"    +
                 "'" + Etu.getPrenomEt() + "'," +
                 "'" + Etu.getVilleEt() + "')";
         System.out.println(" Execution de la requete : " + req);
