@@ -8,12 +8,16 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnexionUnique {
-    private static final String CONNECT_URL = "jdbc:oracle:thin:@//oratorio.aix.univ-amu.fr:1521/ONZEG";
+    //private static final String CONNECT_URL = "jdbc:oracle:thin:@//oratorio.aix.univ-amu.fr:1521/ONZEG";
+    private static final String CONNECT_URL = "jdbc:mysql://localhost:3306/gestion_pedagogique_iut";
     private static ConnexionUnique instance = null;
     private Connection connection;
-    static String login = "et2127";
-    static String password = "oEzyBUs";
-    static final String DB_NAME = "Oracle";
+    //static String login = "et2127";
+    static String login = "jerem";
+    //static String password = "oEzyBUs";
+    static String password = "test";
+    //static final String DB_NAME = "Oracle";
+    static final String DB_NAME = "MYSQL";
 
     private ConnexionUnique() throws SQLException {
         System.out.println("Connecté à " + DB_NAME + "\n");

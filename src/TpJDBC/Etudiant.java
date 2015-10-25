@@ -26,6 +26,10 @@ public class Etudiant implements Serializable {
 
     }
 
+    public Etudiant(String nom_et, int num_et, String prenom_et, String cp_et, String ville_et, int annee, int groupe) {
+
+    }
+
 
     public void setNumEt(int numEt) {
         this.numEt = numEt;
